@@ -29,7 +29,7 @@ sidebar: false
 
 2.  Production Process Optimization
 
-3.   Refinery Model Optimization
+3.  Refinery Model Optimization
 
 # Competencies
 •  Solidworks: 3/5
