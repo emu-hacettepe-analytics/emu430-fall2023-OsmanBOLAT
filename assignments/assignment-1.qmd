@@ -4,10 +4,12 @@ title: "Assignment 1"
 
 # Assignment 1
 
-```{r}
-1 + 1
-```
+**`{r}**                                                           **```{Python}** 
+-  Libraries in the R programming language provide                 -  Python's libraries help with production and distribution.
+a variety of statistical and graphical techniques 
+for data scientists to use for data analysis.
 
+-  
 My first assignment has two parts.
 
 ## (a)
