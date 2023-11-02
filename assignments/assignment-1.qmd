@@ -9,7 +9,7 @@ title: "Assignment 1"
 a variety of statistical and graphical techniques 
 for data scientists to use for data analysis.
 
--  
+-  R can be used with the RStudio IDE.                             -  Python can be used with the Spider and Ipython Notebook IDEas.
 My first assignment has two parts.
 
 ## (a)
