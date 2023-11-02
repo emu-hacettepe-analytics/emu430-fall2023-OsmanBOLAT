@@ -9,22 +9,37 @@ sidebar: false
 
 # Work Experience
 
+1.  DORA MAKINA, Planning Engineer, June 2021 – September 2021
+
+2.  Mossback Restaurant, Kitchen Helper, June 2022- September 2022
+
+3.  LC WAIKIKI, Cashier assistant manager, November 2016- May 2022
+
 ## Employements
-
-1.  Firm xxx, position xx, year xxx
-
-2.  Firm yyy, position yyy, year yyy
 
 ## Internships
 
-1.  Firm aaa, position xx, year xxx
+1.  TUPRAS, Planning Engineer, July 2023 - July 2023
 
-2.  Firm bbb, position yyy, year yyy
+2.  Mercedes-Benz Aydoğanlar Otomotiv, Service Consultant, July 2017- August 2017
 
 # Projects
 
-# Competencies
+1.  Electric Bike 
 
-R, Quarto, Git, Python
+2.  Production Process Optimization
+
+3.   Refinery Model Optimization
+
+# Competencies
+•  Solidworks: 3/5
+
+•  CANIAS: 3/5
+
+•  Word:4/5
+
+•  Excel:4/5
+
+•  Powerpoint:4/5
 
 # Hobbies
