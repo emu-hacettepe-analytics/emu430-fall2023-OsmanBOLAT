@@ -32,6 +32,7 @@ sidebar: false
 3.  Refinery Model Optimization
 
 # Competencies
+
 •  Solidworks: 3/5
 
 •  CANIAS: 3/5
