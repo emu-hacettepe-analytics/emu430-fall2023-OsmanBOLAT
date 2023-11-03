@@ -21,7 +21,7 @@ sidebar: false
 
 1.  TUPRAS, Planning Engineer, July 2023 - July 2023
 
-2.  Mercedes-Benz Aydoğanlar Otomotiv, Service Consultant, July 2017- August 2017
+2.  Mercedes-Benz Aydoganlar Otomotiv, Service Consultant, July 2017- August 2017
 
 # Projects
 
@@ -29,7 +29,7 @@ sidebar: false
 
 2.  Production Process Optimization
 
-3.  Refinery Model Optimization
+3.  Rafinery Model Optimization
 
 # Competencies
 
