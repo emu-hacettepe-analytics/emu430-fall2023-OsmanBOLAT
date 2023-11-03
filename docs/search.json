@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Welcome to My Analytics Lab",
     "section": "",
-    "text": "Hello! My name is xxx xxxx.\nThis is my personal webpage.\nPlease stay tuned to follow my works on data analytics, blog posts, and more.\nThis is our template.\n\n\n\n Back to top"
+    "text": "Hello! My name is Osman BOLAT.\nThis is my personal webpage.\nPlease stay tuned to follow my works on data analytics, blog posts, and more.\n\n\n\n Back to top"
   },
   {
     "objectID": "assignments/assignment-2.html",
@@ -25,28 +25,49 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "B.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing."
+    "text": "B.S., Industrial Engineering, Hacettepe University, Turkey, 2018 - ongoing."
   },
   {
     "objectID": "about.html#employements",
     "href": "about.html#employements",
     "title": "About Me",
     "section": "Employements",
-    "text": "Employements\n\nFirm xxx, position xx, year xxx\nFirm yyy, position yyy, year yyy"
+    "text": "Employements"
   },
   {
     "objectID": "about.html#internships",
     "href": "about.html#internships",
     "title": "About Me",
     "section": "Internships",
-    "text": "Internships\n\nFirm aaa, position xx, year xxx\nFirm bbb, position yyy, year yyy"
+    "text": "Internships\n\nTUPRAS, Planning Engineer, July 2023 - July 2023\nMercedes-Benz Aydoğanlar Otomotiv, Service Consultant, July 2017- August 2017"
   },
   {
     "objectID": "assignments/assignment-1.html",
     "href": "assignments/assignment-1.html",
     "title": "Assignment 1",
     "section": "",
-    "text": "1 + 1\n\n[1] 2\n\n\nMy first assignment has two parts."
+    "text": "My first assignment has three parts:\n\n\n\n\nRStudio Cloud is a cloud-based solution and enables students and teachers to learn and teach data science online. The reason it is particularly attractive to teachers is that it requires no installation or configuration.\nHighlights\n-💻 RStudio Cloud allows you to do data science in any web browser without any installation.\n-📚 It has a project-based structure and it is easy for teachers to share their content with students.\n-🏢 There is a group migration feature that allows teachers to access student projects.\n-📝 Projects set as tasks allow students to work directly on the projects without copying them.\n-💡 RStudio Cloud has a free option for educational use, but there are also pricing options in case of heavy usage.\n\n\n\n\nR\n\nLibraries in the R programming language provide a variety of statistical and graphical techniques for data scientists to use for data analysis.\nR can be used with the RStudio IDE.\n\nPython\n\nPython’s libraries help with production and distribution.\nPython can be used with the Spider and Ipython Notebook IDEas.\n\n\n\n\n```{r}\nlibrary(dslabs)\ndata(‘na_example’)\nprint(na_example)\n```\nlibrary(dslabs)\ndata1 &lt;- na_example\ndata1\nsum(is.na(data1))"
+  },
+  {
+    "objectID": "assignments/assignment-1.html#athe-video-i-watched-teaching-and-learning-with-rstudio-cloud-rstudio",
+    "href": "assignments/assignment-1.html#athe-video-i-watched-teaching-and-learning-with-rstudio-cloud-rstudio",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "RStudio Cloud is a cloud-based solution and enables students and teachers to learn and teach data science online. The reason it is particularly attractive to teachers is that it requires no installation or configuration.\nHighlights\n-💻 RStudio Cloud allows you to do data science in any web browser without any installation.\n-📚 It has a project-based structure and it is easy for teachers to share their content with students.\n-🏢 There is a group migration feature that allows teachers to access student projects.\n-📝 Projects set as tasks allow students to work directly on the projects without copying them.\n-💡 RStudio Cloud has a free option for educational use, but there are also pricing options in case of heavy usage."
+  },
+  {
+    "objectID": "assignments/assignment-1.html#bthe-differences-between-r-and-python",
+    "href": "assignments/assignment-1.html#bthe-differences-between-r-and-python",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "R\n\nLibraries in the R programming language provide a variety of statistical and graphical techniques for data scientists to use for data analysis.\nR can be used with the RStudio IDE.\n\nPython\n\nPython’s libraries help with production and distribution.\nPython can be used with the Spider and Ipython Notebook IDEas."
+  },
+  {
+    "objectID": "assignments/assignment-1.html#c-na_example-data-set",
+    "href": "assignments/assignment-1.html#c-na_example-data-set",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "```{r}\nlibrary(dslabs)\ndata(‘na_example’)\nprint(na_example)\n```\nlibrary(dslabs)\ndata1 &lt;- na_example\ndata1\nsum(is.na(data1))"
   },
   {
     "objectID": "assignments.html",

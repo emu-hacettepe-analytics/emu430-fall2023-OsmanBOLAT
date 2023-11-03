@@ -5,11 +5,11 @@ sidebar: false
 
 # Education
 
--   B.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
+-   B.S., Industrial Engineering, Hacettepe University, Turkey, 2018 - ongoing.
 
 # Work Experience
 
-1.  DORA MAKINA, Planning Engineer, June 2021 – September 2021
+1.  DORA MAKINA, Planning Engineer, June 2021 -- September 2021
 
 2.  Mossback Restaurant, Kitchen Helper, June 2022- September 2022
 
@@ -25,7 +25,7 @@ sidebar: false
 
 # Projects
 
-1.  Electric Bike 
+1.  Electric Bike
 
 2.  Production Process Optimization
 
@@ -33,14 +33,14 @@ sidebar: false
 
 # Competencies
 
-•  Solidworks: 3/5
+• Solidworks: 3/5
 
-•  CANIAS: 3/5
+• CANIAS: 3/5
 
-•  Word:4/5
+• Word:4/5
 
-•  Excel:4/5
+• Excel:4/5
 
-•  Powerpoint:4/5
+• Powerpoint:4/5
 
 # Hobbies

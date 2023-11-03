@@ -4,14 +4,56 @@ title: "Assignment 1"
 
 # Assignment 1
 
-**`{r}**                                                           **```{Python}** 
--  Libraries in the R programming language provide                 -  Python's libraries help with production and distribution.
-a variety of statistical and graphical techniques 
-for data scientists to use for data analysis.
+My first assignment has three parts:
 
--  R can be used with the RStudio IDE.                             -  Python can be used with the Spider and Ipython Notebook IDEas.
-My first assignment has two parts.
+## (a)The video I watched : [**Teaching and learning with RStudio Cloud \| RStudio**](https://www.youtube.com/watch?v=gCZ7oueZw6Q&list=PL9HYL-VRX0oTOK4cpbCbRk15K2roEgzVW&index=66)
 
-## (a)
+### Summary
 
-## (b)
+RStudio Cloud is a cloud-based solution and enables students and teachers to learn and teach data science online. The reason it is particularly attractive to teachers is that it requires no installation or configuration.
+
+Highlights
+
+-💻 RStudio Cloud allows you to do data science in any web browser without any installation.
+
+-📚 It has a project-based structure and it is easy for teachers to share their content with students.
+
+-🏢 There is a group migration feature that allows teachers to access student projects.
+
+-📝 Projects set as tasks allow students to work directly on the projects without copying them.
+
+-💡 RStudio Cloud has a free option for educational use, but there are also pricing options in case of heavy usage.
+
+## (b)The differences between R and Python
+
+**R**
+
+-   Libraries in the R programming language provide a variety of statistical and graphical techniques for data scientists to use for data analysis.
+
+-   R can be used with the RStudio IDE.
+
+**Python**
+
+-   Python's libraries help with production and distribution.
+
+-   Python can be used with the Spider and Ipython Notebook IDEas.
+
+## (c) na_example Data Set
+
+\`\`\`**{r}**
+
+library(dslabs)
+
+data('na_example')
+
+print(na_example)
+
+\`\`\`
+
+library(dslabs)
+
+data1 \<- na_example
+
+data1
+
+sum(is.na(data1))
