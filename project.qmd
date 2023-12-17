@@ -9,4 +9,4 @@ Below, you'll find a brief summary of our project. To access a detailed project 
 
 # **Summary**
 
-The project uses a dataset on museums and libranies in Turkish cities, offering insights into library/museum counts, visitor numbers, and registered users. Analyzing cultural values over time helps gauge institutional usage and balance between demand and supply. The findings guide decisions on cultural service needs, deficiencies, and areas requiring development.
+The project uses a dataset on museums and libraries in Turkish cities, offering insights into library/museum counts, visitor numbers, and registered users. Analyzing cultural values over time helps gauge institutional usage and balance between demand and supply. The findings guide decisions on cultural service needs, deficiencies, and areas requiring development.
