@@ -9,7 +9,14 @@ title: "Assignment 2"
 # Loading necessary libraries
 
 library(tidyverse)
+library(stringr)
 library(rvest)
+library(ggplot2)
+library(knitr)
+library(reshape2)
+library(dplyr)
+library(magrittr)
+
 
 # Defining the url before 2010
 login_url_1 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=,2009-12-31&num_votes=2500,&country_of_origin=TR&count=250"
@@ -78,4 +85,104 @@ movies <- bind_rows(movies_1, movies_2)
 # Sonuçları kontrol etme
 print(head(movies, 10))
 ```
+
+### Question 3
+
+# a-)
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Sorting movies by rating
+sorted_movies <- movies %>% arrange(desc(rating))
+
+# Top 5 movies
+top_5_movies <- head(sorted_movies, 5)
+
+# Bottom 5 movies
+bottom_5_movies <- tail(sorted_movies, 5)
+
+# Displaying the results
+top_5_movies
+bottom_5_movies
+
+
+```
+
+comment
+
+# b-)
+
+Here are my top three favorite movies from that list.
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+favorite_movies <- movies %>%
+  filter(name %in% c("Ayla: The Daughter of War", "Babam ve Oglum", "Mucize"))
+
+print(favorite_movies)
+
+
+```
+# c-)
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Calculating yearly averages
+yearly_averages <- movies %>% 
+  group_by(year) %>%
+  summarise(average_rating = mean(rating, na.rm = TRUE),
+            movie_count = n())
+
+# Scatter plot for average ratings over the years
+ggplot(yearly_averages, aes(x = year, y = average_rating)) +
+  geom_point() +
+  labs(title = "Yearly Average Ratings of Turkish Movies")
+
+# Scatter plot for number of movies over the years
+ggplot(yearly_averages, aes(x = year, y = movie_count)) +
+  geom_point() +
+  labs(title = "Number of Movies Released Each Year")
+
+
+
+
+```
+
+# d-)
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Korelasyon hesaplama
+correlation_votes_ratings <- cor(movies$vote, movies$rating, use = "complete.obs")
+
+# Scatter plot oluşturma
+ggplot(movies, aes(x = vote, y = rating)) +
+  geom_point() +
+  labs(
+    title = "Korelasyon: Votes vs Ratings",
+    x = "Oy Sayısı",
+    y = "IMDb Değerlendirmesi"
+  ) +
+  theme_minimal()
+
+```
+
+comment
+
+# e-)
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+ggplot(data = movies, aes(x = duration, y = rating)) +
+  geom_jitter() +
+  labs(x = "Duration (Dakika)", y = "Rating") +
+  ggtitle("Duration vs. Rating Scatterplot")
+
+```
+
+comment
+
+
 
