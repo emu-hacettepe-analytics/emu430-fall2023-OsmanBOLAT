@@ -14,15 +14,15 @@ RStudio Cloud is a cloud-based solution and enables students and teachers to lea
 
 Highlights
 
--💻 RStudio Cloud allows you to do data science in any web browser without any installation.
+-p; RStudio Cloud allows you to do data science in any web browser without any installation.
 
--📚 It has a project-based structure and it is easy for teachers to share their content with students.
+-p It has a project-based structure and it is easy for teachers to share their content with students.
 
--🏢 There is a group migration feature that allows teachers to access student projects.
+-p" There is a group migration feature that allows teachers to access student projects.
 
--📝 Projects set as tasks allow students to work directly on the projects without copying them.
+-p Projects set as tasks allow students to work directly on the projects without copying them.
 
--💡 RStudio Cloud has a free option for educational use, but there are also pricing options in case of heavy usage.
+-p! RStudio Cloud has a free option for educational use, but there are also pricing options in case of heavy usage.
 
 ## (b)The differences between R and Python
 
