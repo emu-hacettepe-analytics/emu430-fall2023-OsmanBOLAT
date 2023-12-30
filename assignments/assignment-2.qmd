@@ -110,8 +110,9 @@ bottom_5_movies
 
 
 ```
+I've watched two of them, and I believe the ratings are accurate.
 
-comment
+I haven’t watched any of them
 
 # b-)
 
@@ -151,6 +152,11 @@ ggplot(yearly_averages, aes(x = year, y = movie_count)) +
 
 ```
 
+
+Over time, it shows an upward trend in ratings.
+
+
+
 # d-)
 ```{r}
 #| code-fold: true
@@ -171,15 +177,43 @@ ggplot(data = na.omit(movies), aes(x = vote, y = rating)) +
   ) +
   theme_minimal()
 
+# Korelasyon değerini yazdırma
+cat("Korelasyon Değeri:", correlation_votes_ratings)
+
+
+# Korelasyon hesaplama ve eksik değerleri ele alma
+correlation_votes_ratings <- cor(movies$vote, movies$rating, use = "complete.obs")
+
+# Scatter plot oluşturma
+library(ggplot2)
+
+ggplot(data = na.omit(movies), aes(x = vote, y = rating)) +
+  geom_point() +
+  labs(
+    title = "Korelasyon: Oy Sayısı vs. IMDb Değerlendirmesi",
+    x = "Oy Sayısı",
+    y = "IMDb Değerlendirmesi"
+  ) +
+  theme_minimal()
+
 
 ```
 
-comment
+The correlation coefficient, which is determined as 0.1075729, is quite low. Therefore, we can conclude that there is a weak linear relationship between Ratings and Votes.
+
+
 
 # e-)
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+
+# Korelasyon hesaplama
+correlation_duration_rating <- cor(movies$duration, movies$rating, use = "complete.obs")
+
+# Korelasyon değerini yazdırma
+cat("Korelasyon Değeri:", correlation_duration_rating)
+
 ggplot(data = movies, aes(x = duration, y = rating)) +
   geom_jitter() +
   labs(x = "Duration (Dakika)", y = "Rating") +
@@ -187,7 +221,9 @@ ggplot(data = movies, aes(x = duration, y = rating)) +
 
 ```
 
-comment
+With a correlation value of 0.008795358, it has a significantly low value. Therefore, we can conclude that there is a weak linear relationship between Durations and Votes at the 1% significance level.
+
+
 
 ### Question 4
 
