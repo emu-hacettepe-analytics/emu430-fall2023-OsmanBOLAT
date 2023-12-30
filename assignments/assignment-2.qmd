@@ -131,23 +131,22 @@ my_movies
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-# Calculating yearly averages
-yearly_averages <- movies %>% 
+# Veri setinizdeki eksik değerleri dikkate alarak, yıllık ortalama puanları ve film sayısını hesaplayın
+yearly_averages <- movies %>%
+  drop_na(rating) %>%  # Eksik puanları içermeyen satırları seçin
   group_by(year) %>%
-  summarise(average_rating = mean(rating, na.rm = TRUE),
+  summarise(average_rating = mean(rating),
             movie_count = n())
 
-# Scatter plot for average ratings over the years
+# Yıllık ortalama puanların dağılımını gösteren bir saçılma grafiği oluşturun
 ggplot(yearly_averages, aes(x = year, y = average_rating)) +
   geom_point() +
-  labs(title = "Yearly Average Ratings of Turkish Movies")
+  labs(title = "Yıllık Ortalama Puanlar")
 
-# Scatter plot for number of movies over the years
+# Yıllara göre çıkan film sayısını gösteren bir saçılma grafiği oluşturun
 ggplot(yearly_averages, aes(x = year, y = movie_count)) +
   geom_point() +
-  labs(title = "Number of Movies Released Each Year")
-
-
+  labs(title = "Her Yıl Yayınlanan Film Sayısı")
 
 
 ```
@@ -156,18 +155,21 @@ ggplot(yearly_averages, aes(x = year, y = movie_count)) +
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-# Korelasyon hesaplama
+# Korelasyon hesaplama ve eksik değerleri ele alma
 correlation_votes_ratings <- cor(movies$vote, movies$rating, use = "complete.obs")
 
 # Scatter plot oluşturma
-ggplot(movies, aes(x = vote, y = rating)) +
+library(ggplot2)
+
+ggplot(data = na.omit(movies), aes(x = vote, y = rating)) +
   geom_point() +
   labs(
-    title = "Korelasyon: Votes vs Ratings",
+    title = "Korelasyon: Oy Sayısı vs. IMDb Değerlendirmesi",
     x = "Oy Sayısı",
     y = "IMDb Değerlendirmesi"
   ) +
   theme_minimal()
+
 
 ```
 
