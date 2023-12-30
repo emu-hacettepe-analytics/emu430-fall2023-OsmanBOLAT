@@ -231,36 +231,26 @@ With a correlation value of 0.008795358, it has a significantly low value. There
 #| code-fold: true
 #| code-summary: "Show the code"
 
-URL_3 = "https://www.imdb.com/search/title/?title_type=feature&groups=top_1000&country_of_origin=TR&count=250"
-
-movie_name <- c()
-movie_year <- c()
-
-HTML <- read_html(URL_3)
-
-title_names <- HTML %>% html_nodes('.ipc-title__text')
-title_names <- html_text(title_names)
-title_names <- tail(head(title_names, -1), -1)
-title_names <- str_split(title_names, " ", n = 2)
-title_names <- unlist(lapply(title_names, function(x) x[2]))
-
-year <- HTML %>% html_nodes(".sc-43986a27-7.dBkaPT.dli-title-metadata")
-year <- html_text(year)
-year <- substr(year, 1, 4)
-year <- as.numeric(year)
-
-movie_name <- append(movie_name, title_names)
-movie_year <- append(movie_year, year)
-
-top1000_df <- data.frame(movie_name, movie_year)
-
-top1000_df %>%
-  kable() %>%
-  kable_styling(full_width = FALSE)
 
 
 ```
 comment   
 
+
+
+
+
 # • 
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+
+
+```
+comment   
+
+
 
