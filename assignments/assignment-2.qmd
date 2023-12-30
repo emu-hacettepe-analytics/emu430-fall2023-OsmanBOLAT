@@ -121,9 +121,23 @@ Here are my top three favorite movies from that list.
 #| code-fold: true
 #| code-summary: "Show the code"
 # List column names in your data frame
+# knitr paketini yükleyin
+library(knitr)
 
-my_movies <- movies_df[movies_df$movie_titles %in% c("Ayla: The Daughter of War", "Babam ve Oglum", "Mucize"), ]
-my_movies
+# Örnek veri çerçevesi (sorted_movies) oluşturun
+# Bu sadece bir örnek, gerçek veri çerçeveniz farklı olabilir
+sorted_movies <- data.frame(
+  TITLE = c("Ayla: The Daughter of War", "Babam ve Oglum", "Mucize", "Diğer Film 1", "Diğer Film 2"),
+  Year = c(2017, 2005, 2015, 2010, 2020),
+  Rating = c(8.4, 8.5, 7.8, 6.5, 7.0)
+)
+
+# Belirli başlıklara göre filtreleme yapın
+filtered_movies <- sorted_movies[sorted_movies$TITLE %in% c("Ayla: The Daughter of War", "Babam ve Oglum", "Mucize"), ]
+
+# Filtrelenmiş veriyi kable ile tablo olarak gösterin
+kable(filtered_movies)
+
 
 
 ```
@@ -230,7 +244,29 @@ With a correlation value of 0.008795358, it has a significantly low value. There
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+url_new_data <- "https://www.imdb.com/search/title/?groups=top_1000&country_of_origin=TR" 
 
+title_new <- c()
+year_new <- c()
+
+for (url in url_new_data) {
+  page <- read_html(url)
+  
+  # To extract titles
+  title_names_new <- page %>% html_nodes('.ipc-title__text') %>% html_text()
+  title_names_new <- tail(head(title_names_new, -1), -1)
+  title_names_new <- str_split(title_names_new, " ", n = 2)
+  title_names_new <- unlist(lapply(title_names_new, function(x) { x[2] }))
+  title_new <- append(title_new, title_names_new)
+  
+  # To extract years
+  years_new <- page %>% html_nodes('.sc-43986a27-7.dBkaPT.dli-title-metadata') %>% html_text() %>% str_extract("\\d{4}") %>% as.numeric()
+  year_new <- append(year_new, years_new)
+  
+}
+
+movies_df_new <- data.frame(title_new, year_new)
+movies_df_new
 
 
 ```
