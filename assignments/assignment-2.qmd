@@ -155,6 +155,7 @@ ggplot(yearly_averages, aes(x = year, y = movie_count)) +
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+
 # Korelasyon hesaplama ve eksik değerleri ele alma
 correlation_votes_ratings <- cor(movies$vote, movies$rating, use = "complete.obs")
 

@@ -1,0 +1,248 @@
+---
+title: "Assignment 2"
+---
+
+
+### Question 1
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Loading necessary libraries
+
+library(tidyverse)
+library(stringr)
+library(rvest)
+library(ggplot2)
+library(knitr)
+library(reshape2)
+library(dplyr)
+library(magrittr)
+library(kableExtra)
+
+
+
+# Defining the url before 2010
+login_url_1 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=,2009-12-31&num_votes=2500,&country_of_origin=TR&count=250"
+
+# Defining the url years between 2010 and now
+login_url_2 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=2010-01-01,2023-12-28&num_votes=2500,&country_of_origin=TR&count=250"
+
+```
+
+
+### Question 2
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Fonksiyon: IMDb verilerini çekme ve temizleme
+scrape_imdb_data <- function(url) {
+  data <- read_html(url)
+  
+  name <- data %>%
+    html_nodes('.ipc-title__text') %>%
+    html_text()
+  
+  rating <- data %>%
+    html_nodes('.ipc-rating-star--base') %>%
+    html_attr('aria-label') %>%
+    str_extract("\\d+\\.\\d+|\\d+") %>%
+    map_dbl(~ ifelse(is.na(.x), NA_real_, as.numeric(.x)))
+  
+  year <- data %>%
+    html_nodes(xpath = '//*[contains(@class,"sc-43986a27-7")]') %>%
+    html_text() %>%
+    str_extract("\\d{4}") %>%
+    map_dbl(~ ifelse(is.na(.x), NA_real_, as.numeric(.x)))
+  
+  duration <- data %>%
+    html_nodes(xpath = '//*[contains(@class,"sc-43986a27-7")]') %>%
+    html_text() %>%
+    str_extract("\\d+h \\d+m|\\d+h") %>%
+    str_replace_all("h", ":") %>%
+    str_replace_all("m", "") %>%
+    str_replace_all("^(:\\d+)$", "0\\1") %>%  # Sadece dakika varsa, saat olarak "0" ekleyin
+    str_split(":") %>%
+    map_dbl(~ sum(as.numeric(.x) * c(60, 1), na.rm = TRUE))
+
+  
+  vote <- data %>%
+    html_nodes('.kRnqtn') %>%
+    html_text() %>%
+    parse_number()
+  
+  # Uzunluğu eşitlemek için kırpma işlemi
+  min_length <- min(length(name), length(rating), length(year), length(duration), length(vote))
+  name <- name[1:min_length]
+  rating <- rating[1:min_length]
+  year <- year[1:min_length]
+  duration <- duration[1:min_length]
+  vote <- vote[1:min_length]
+  
+  return(data.frame(name, rating, year, duration, vote))
+}
+
+# Verileri çekme
+movies_1 <- scrape_imdb_data(login_url_1)
+movies_2 <- scrape_imdb_data(login_url_2)
+movies <- bind_rows(movies_1, movies_2)
+
+# Sonuçları kontrol etme
+print(head(movies, 10))
+```
+
+
+### Question 3
+
+# a-)
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Sorting movies by rating
+sorted_movies <- movies %>% arrange(desc(rating))
+
+# Top 5 movies
+top_5_movies <- head(sorted_movies, 5)
+
+# Bottom 5 movies
+bottom_5_movies <- tail(sorted_movies, 5)
+
+# Displaying the results
+top_5_movies
+bottom_5_movies
+
+
+```
+
+
+comment
+
+# b-)
+
+Here are my top three favorite movies from that list.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# List column names in your data frame
+
+my_movies <- movies_df[movies_df$movie_titles %in% c("Ayla: The Daughter of War", "Babam ve Oglum", "Mucize"), ]
+my_movies
+
+
+```
+
+# c-)
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Veri setinizdeki eksik değerleri dikkate alarak, yıllık ortalama puanları ve film sayısını hesaplayın
+yearly_averages <- movies %>%
+  drop_na(rating) %>%  # Eksik puanları içermeyen satırları seçin
+  group_by(year) %>%
+  summarise(average_rating = mean(rating),
+            movie_count = n())
+
+# Yıllık ortalama puanların dağılımını gösteren bir saçılma grafiği oluşturun
+ggplot(yearly_averages, aes(x = year, y = average_rating)) +
+  geom_point() +
+  labs(title = "Yıllık Ortalama Puanlar")
+
+# Yıllara göre çıkan film sayısını gösteren bir saçılma grafiği oluşturun
+ggplot(yearly_averages, aes(x = year, y = movie_count)) +
+  geom_point() +
+  labs(title = "Her Yıl Yayınlanan Film Sayısı")
+
+
+```
+
+
+# d-)
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# Korelasyon hesaplama ve eksik değerleri ele alma
+correlation_votes_ratings <- cor(movies$vote, movies$rating, use = "complete.obs")
+
+# Scatter plot oluşturma
+library(ggplot2)
+
+ggplot(data = na.omit(movies), aes(x = vote, y = rating)) +
+  geom_point() +
+  labs(
+    title = "Korelasyon: Oy Sayısı vs. IMDb Değerlendirmesi",
+    x = "Oy Sayısı",
+    y = "IMDb Değerlendirmesi"
+  ) +
+  theme_minimal()
+
+
+```
+
+
+comment
+
+# e-)
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+ggplot(data = movies, aes(x = duration, y = rating)) +
+  geom_jitter() +
+  labs(x = "Duration (Dakika)", y = "Rating") +
+  ggtitle("Duration vs. Rating Scatterplot")
+
+```
+
+
+comment
+
+### Question 4
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+URL_3 = "https://www.imdb.com/search/title/?title_type=feature&groups=top_1000&country_of_origin=TR&count=250"
+
+movie_name <- c()
+movie_year <- c()
+
+HTML <- read_html(URL_3)
+
+title_names <- HTML %>% html_nodes('.ipc-title__text')
+title_names <- html_text(title_names)
+title_names <- tail(head(title_names, -1), -1)
+title_names <- str_split(title_names, " ", n = 2)
+title_names <- unlist(lapply(title_names, function(x) x[2]))
+
+year <- HTML %>% html_nodes(".sc-43986a27-7.dBkaPT.dli-title-metadata")
+year <- html_text(year)
+year <- substr(year, 1, 4)
+year <- as.numeric(year)
+
+movie_name <- append(movie_name, title_names)
+movie_year <- append(movie_year, year)
+
+top1000_df <- data.frame(movie_name, movie_year)
+
+top1000_df %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+
+
+```
+
+comment   
+
+# • 
+
+
